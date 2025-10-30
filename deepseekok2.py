@@ -33,7 +33,7 @@ exchange = ccxt.okx({
 TRADE_CONFIG = {
     'symbol': 'ETH/USDT:USDT',  # OKX的合约符号格式（改为ETH永续）
     'leverage': 50,  # 杠杆倍数,只影响保证金不影响下单价值
-    'timeframe': '3m',  # 支持 1m/3m/5m/15m
+    'timeframe': '5m',  # 支持 1m/3m/5m/15m
     'test_mode': True,  # 测试模式
     'data_points': 288,  # 默认覆盖约24小时（会在运行时按周期自动调整）
     'analysis_periods': {
@@ -44,12 +44,12 @@ TRADE_CONFIG = {
     # 新增智能仓位参数
     'position_management': {
         'enable_intelligent_position': True,  # 🆕 新增：是否启用智能仓位管理
-        'base_usdt_amount': 10,  # USDT投入下单基数
-        'high_confidence_multiplier': 1.5,
-        'medium_confidence_multiplier': 1.0,
-        'low_confidence_multiplier': 0.5,
+        'base_usdt_amount': 2,  # USDT投入下单基数
+        'high_confidence_multiplier': 1.5,#高信心系数
+        'medium_confidence_multiplier': 1.0,#中信心系数
+        'low_confidence_multiplier': 0.5,#低信心系数
         'max_position_ratio': 10,  # 单次最大仓位比例
-        'trend_strength_multiplier': 1.2
+        'trend_strength_multiplier': 1.2,#趋势系数
     }
 }
 
@@ -120,7 +120,7 @@ def setup_exchange():
                     isolated_position_info = {
                         'side': pos.get('side'),
                         'size': contracts,
-                        'entry_price': pos.get('entryPrice'),
+                        'entry_price': pos.get('entryPrice'),#入场价
                         'mode': mode
                     }
                     break
@@ -1272,7 +1272,7 @@ def main():
             # 如果执行成功，等待一段时间再检查
             if result is not False:
                 print("✅ 本次交易分析执行完成，等待下一次执行...")
-                time.sleep(60)  # 每分钟检查一次
+                time.sleep(25)  # 每分钟检查一次
             else:
                 # 如果执行失败，等待更长时间再重试
                 print("⚠️ 本次执行失败，等待5分钟后重试...")
