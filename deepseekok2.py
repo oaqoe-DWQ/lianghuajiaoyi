@@ -38,7 +38,7 @@ TRADE_CONFIG = {
     'data_points': 288,  # 默认覆盖约24小时（会在运行时按周期自动调整）
     'analysis_periods': {
         'short_term': 20,  # 短期均线
-        'medium_term': 50,  # 中期均线
+        'medium_term': 50,  # 中期均线，50
         'long_term': 96  # 长期趋势
     },
     # 新增智能仓位参数
