@@ -69,7 +69,7 @@
 
 **交易所：okx手机app是大陆唯一能用的交易所app，无需翻墙**
 
-3. **OKX API**: https://www.gtohfmmy.com/join/6746503
+3. **OKX API**: https://www.gtohfmmy.com/join/
    - 使用邀请码注册并完成任务，最高获100usdt奖励
    - API管理 → 创建API
    - 权限：需要"交易"权限
